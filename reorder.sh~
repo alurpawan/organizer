@@ -1,0 +1,20 @@
+#!/bin/bash
+#A script the reorders the list of files in a folder
+
+#input
+echo "Enter the location of the folder to reoder. Type back to undo : "
+read $location
+
+#Get list of names, and store it in case of error
+cd $location
+ls | grep -v "orig_name.txt" >> orig_name.txt
+ep_no=1
+
+cat orig_name.txt | while $LINE
+do
+    echo "Episode "$ep_no" : "$LINE
+    mv $LINE "Episode$ep_no"
+    ep_no=$((ep_no+1))
+done
+
+
